@@ -8,117 +8,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --orange: #FF6B00;
-      --orange-dark: #e05e00;
-      --dark: #0f0f0f;
-      --dark2: #1a1a1a;
-      --dark3: #222;
-      --light: #f5f5f5;
-      --white: #ffffff;
-      --gray: #888;
-      --text: #333;
-    }
-
+    :root { --orange: #FF6B00; --orange-dark: #e05e00; --dark: #0f0f0f; --dark2: #1a1a1a; --dark3: #222; --light: #f5f5f5; --white: #ffffff; --gray: #888; --text: #333; }
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
-      background: var(--white);
-      overflow-x: hidden;
-    }
-
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      background: var(--dark);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 5%;
-      height: 70px;
-      border-bottom: 2px solid var(--orange);
-    }
-
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--dark); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 70px; border-bottom: 2px solid var(--orange); }
     .nav-logo { font-size: 1.3rem; font-weight: 900; color: var(--white); letter-spacing: -0.5px; }
     .nav-logo span { color: var(--orange); }
-
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { color: #ccc; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--orange); }
-
     .nav-cta { background: var(--orange); color: var(--white); padding: 0.55rem 1.3rem; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: background 0.2s; white-space: nowrap; }
     .nav-cta:hover { background: var(--orange-dark); }
-
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
-
-    #hero {
-      min-height: 100vh;
-      background:
-        linear-gradient(to right, rgba(10,10,10,0.88) 55%, rgba(10,10,10,0.4) 100%),
-        url('https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1600&q=80') center/cover no-repeat;
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 120px 5% 60px;
-    }
-
+    #hero { min-height: 100vh; background: linear-gradient(to right, rgba(10,10,10,0.88) 55%, rgba(10,10,10,0.4) 100%), url('https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1600&q=80') center/cover no-repeat; display: flex; flex-direction: column; justify-content: center; padding: 120px 5% 60px; }
     .hero-content { max-width: 560px; }
-
     .hero-badge { display: inline-block; background: var(--orange); color: var(--white); font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.3rem 0.9rem; border-radius: 2px; margin-bottom: 1.2rem; }
-
     .hero-content h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 1rem; }
     .hero-content h1 span { color: var(--orange); }
     .hero-content p { color: #ccc; font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; max-width: 460px; }
-
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-
     .btn-primary { background: var(--orange); color: var(--white); padding: 0.8rem 1.8rem; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: background 0.2s, transform 0.15s; display: inline-block; }
     .btn-primary:hover { background: var(--orange-dark); transform: translateY(-1px); }
-
     .btn-ghost { background: transparent; color: var(--white); padding: 0.8rem 1.8rem; border-radius: 4px; border: 2px solid rgba(255,255,255,0.5); text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: border-color 0.2s, color 0.2s; display: inline-block; }
     .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
-
     #contact-form { background: var(--dark2); padding: 2.5rem 5%; border-top: 3px solid var(--orange); }
-
     .form-label { text-align: center; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 1.2rem; }
-
     .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; max-width: 1100px; margin: 0 auto; }
-
     .form-grid input, .form-grid select, .form-grid textarea { background: #2a2a2a; border: 1px solid #3a3a3a; color: var(--white); padding: 0.8rem 1rem; border-radius: 4px; font-size: 0.9rem; font-family: inherit; transition: border-color 0.2s; outline: none; }
     .form-grid input::placeholder, .form-grid select::placeholder, .form-grid textarea::placeholder { color: #666; }
     .form-grid select option { background: #2a2a2a; }
     .form-grid input:focus, .form-grid select:focus, .form-grid textarea:focus { border-color: var(--orange); }
-
     .form-message { grid-column: 1 / -1; }
     .form-message textarea { width: 100%; resize: vertical; min-height: 90px; }
-
     .form-submit-wrap { grid-column: 1 / -1; display: flex; justify-content: center; }
     .form-submit { background: var(--orange); color: var(--white); border: none; padding: 0.85rem 2.5rem; border-radius: 4px; font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: background 0.2s; letter-spacing: 0.5px; }
     .form-submit:hover { background: var(--orange-dark); }
-
     section { padding: 80px 5%; }
-
     .section-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
     .section-title { font-size: clamp(1.7rem, 3.5vw, 2.5rem); font-weight: 900; line-height: 1.2; margin-bottom: 1rem; }
     .section-title span { color: var(--orange); }
     .section-sub { color: var(--gray); max-width: 540px; line-height: 1.7; font-size: 0.97rem; }
-
     #why { background: var(--light); text-align: center; }
     #why .section-title { margin-bottom: 0.5rem; }
     #why .section-tag { text-align: center; }
     .why-header { margin-bottom: 3rem; }
-
     .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
-
     .why-card { background: var(--white); border-radius: 8px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-bottom: 3px solid transparent; transition: border-color 0.2s, transform 0.2s; }
     .why-card:hover { border-color: var(--orange); transform: translateY(-4px); }
     .why-icon { width: 58px; height: 58px; background: #fff3e8; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.6rem; }
     .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
     .why-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
-
     #about { background: var(--dark); color: var(--white); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto; }
     .about-img-wrap { position: relative; }
@@ -132,7 +72,6 @@
     .about-list li::before { content: '✓'; color: var(--orange); font-weight: 900; flex-shrink: 0; margin-top: 1px; }
     .signature { font-family: Georgia, serif; font-style: italic; font-size: 1.6rem; color: var(--orange); margin-top: 1.5rem; }
     .sig-name { font-size: 0.8rem; color: #888; margin-top: 0.2rem; font-style: normal; font-family: 'Inter', sans-serif; letter-spacing: 1px; }
-
     #services { background: var(--white); }
     .services-header { margin-bottom: 3rem; }
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
@@ -141,7 +80,6 @@
     .service-icon { font-size: 2rem; margin-bottom: 0.8rem; }
     .service-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
     .service-card p { font-size: 0.87rem; color: var(--gray); line-height: 1.6; }
-
     #testimonials { background: var(--dark2); color: var(--white); text-align: center; }
     #testimonials .section-title { color: var(--white); margin-bottom: 3rem; }
     .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
@@ -153,7 +91,6 @@
     .author-name { font-weight: 700; font-size: 0.9rem; }
     .author-loc { font-size: 0.78rem; color: var(--gray); }
     .stars { color: var(--orange); font-size: 0.85rem; margin-bottom: 0.6rem; }
-
     footer { background: var(--dark); color: #aaa; padding: 3rem 5% 2rem; border-top: 2px solid var(--orange); }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; max-width: 1100px; margin: 0 auto 2rem; }
     .footer-brand h2 { color: var(--white); font-size: 1.3rem; font-weight: 900; margin-bottom: 0.7rem; }
@@ -170,7 +107,6 @@
     .social-links { display: flex; gap: 0.75rem; }
     .social-links a { width: 34px; height: 34px; border-radius: 50%; background: #2a2a2a; color: #aaa; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 0.85rem; transition: background 0.2s, color 0.2s; }
     .social-links a:hover { background: var(--orange); color: var(--white); }
-
     @media (max-width: 768px) {
       .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--dark); padding: 1rem 5%; gap: 0; }
       .nav-links.open { display: flex; }
@@ -183,7 +119,6 @@
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; text-align: center; }
     }
-
     @media (max-width: 480px) {
       #hero { padding: 100px 5% 40px; }
       .hero-btns { flex-direction: column; }
@@ -211,11 +146,11 @@
 
 <section id="hero">
   <div class="hero-content">
-    <span class="hero-badge">⚡ Licensed &amp; Insured Electrician</span>
+    <span class="hero-badge">⚡ Family Owned · Veteran Owned · Houston, TX</span>
     <h1>Rios <span>Electrical</span> Solutions</h1>
-    <p>Professional electrical services for homes and businesses across the area. Quality work, honest pricing, and a name you can trust — backed by 10+ years of hands-on experience.</p>
+    <p>We are a family owned, veteran owned electrical company serving Houston and the greater Houston area. With over 10 years of hands on electrical experience, we take pride in doing the job right and treating every home like it is our own.</p>
     <div class="hero-btns">
-      <a href="#contact-form" class="btn-primary">Get a Free Quote →</a>
+      <a href="#contact-form" class="btn-primary">Get a Free Quote</a>
       <a href="#services" class="btn-ghost">View Services</a>
     </div>
   </div>
@@ -242,41 +177,41 @@
       <textarea name="message" placeholder="Tell me about your project..."></textarea>
     </div>
     <div class="form-submit-wrap">
-      <button type="submit" class="form-submit">Send My Request →</button>
+      <button type="submit" class="form-submit">Send My Request</button>
     </div>
   </form>
 </div>
 
 <section id="why">
   <div class="why-header">
-    <p class="section-tag">Why Choose Me</p>
-    <h2 class="section-title">A Commitment to <span>Excellence</span></h2>
+    <p class="section-tag">Why Choose Us</p>
+    <h2 class="section-title">People You Can <span>Count On</span></h2>
   </div>
   <div class="why-grid">
     <div class="why-card">
-      <div class="why-icon">🛡️</div>
-      <h3>Licensed &amp; Insured</h3>
-      <p>Fully licensed and insured for every job — your home and safety are always protected.</p>
+      <div class="why-icon">🏠</div>
+      <h3>Family and Veteran Owned</h3>
+      <p>Josue started Rios Electrical Solutions in 2017 after retiring from the Marines. That background still shapes how the work gets done. Calls get answered quickly, prices are quoted straight, and jobs get finished without cutting corners.</p>
     </div>
     <div class="why-card">
       <div class="why-icon">⚡</div>
       <h3>Fast Response</h3>
-      <p>Same-day and emergency service available. When you need help, I show up — period.</p>
+      <p>We know electrical problems cannot wait. We show up when we say we will and we get to work right away.</p>
     </div>
     <div class="why-card">
       <div class="why-icon">🏆</div>
-      <h3>Quality Workmanship</h3>
-      <p>Every job is done right the first time. Clean installs, no shortcuts, no callbacks.</p>
+      <h3>Quality Work</h3>
+      <p>We do not cut corners. Every job gets done the right way the first time because your home deserves nothing less.</p>
     </div>
     <div class="why-card">
       <div class="why-icon">💰</div>
-      <h3>Affordable Rates</h3>
-      <p>Transparent, upfront pricing with no hidden fees. Fair rates for every budget.</p>
+      <h3>Honest Pricing</h3>
+      <p>No surprises on the bill. We give you a fair price upfront and we stick to it.</p>
     </div>
     <div class="why-card">
       <div class="why-icon">📅</div>
-      <h3>10+ Years Experience</h3>
-      <p>Over a decade of hands-on electrical work across residential and commercial projects.</p>
+      <h3>10 Years of Experience</h3>
+      <p>Over 10 years of real hands on electrical work across Houston. We have seen it all and we know how to handle it.</p>
     </div>
   </div>
 </section>
@@ -284,114 +219,114 @@
 <section id="about">
   <div class="about-grid">
     <div class="about-img-wrap">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Josue Rios — Licensed Electrician" />
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Josue Rios, Rios Electrical Solutions" />
       <div class="about-badge">10+<small>Years Exp.</small></div>
     </div>
     <div class="about-text">
       <p class="section-tag">About Josue Rios</p>
-      <h2 class="section-title">Reliable &amp; Affordable <span>Electrical</span> Solutions</h2>
-      <p class="section-sub">At Rios Electrical Solutions, I bring the same dedication to every job — whether it's a simple ceiling fan swap or a full panel upgrade. I started this business because I believe every homeowner deserves honest, high-quality electrical work at a fair price.</p>
+      <h2 class="section-title">A Family Company That <span>Stands Behind</span> Its Work</h2>
+      <p class="section-sub">Rios Electrical Solutions is a family owned, veteran owned electrical company based in Houston, TX. We serve Houston and the greater Houston area and we bring the same care to every job no matter how big or small. We started this company because we believe every family deserves honest electrical work done right. To us, this is not just a job. It is a commitment we make to every customer we work with.</p>
       <ul class="about-list">
-        <li>Licensed Journeyman Electrician</li>
-        <li>10+ years of residential &amp; commercial experience</li>
-        <li>Serving the local community with integrity</li>
-        <li>Fully insured — every job, every time</li>
-        <li>Clean work areas, punctual, and professional</li>
+        <li>Family owned and veteran owned business</li>
+        <li>Over 10 years of hands on electrical experience</li>
+        <li>Serving Houston and the greater Houston area</li>
+        <li>We show up on time and leave your space clean</li>
         <li>Free estimates on all projects</li>
+        <li>We treat every home like it is our own</li>
       </ul>
       <div class="signature">Josue Rios</div>
-      <p class="sig-name">Founder &amp; Master Electrician — Rios Electrical Solutions</p>
+      <p class="sig-name">Founder, Rios Electrical Solutions</p>
     </div>
   </div>
 </section>
 
 <section id="services">
   <div class="services-header">
-    <p class="section-tag">What I Offer</p>
+    <p class="section-tag">What We Do</p>
     <h2 class="section-title">Our <span>Electrical Services</span></h2>
-    <p class="section-sub">From everyday repairs to full smart-home setups, I handle it all with the same level of care and precision.</p>
+    <p class="section-sub">From everyday repairs to full smart home setups, we handle it all with the same care and attention we bring to every job.</p>
   </div>
   <div class="services-grid">
     <div class="service-card">
       <div class="service-icon">🏠</div>
       <h3>Residential Service</h3>
-      <p>Complete electrical services for homes — new construction, rewiring, outlet additions, and everything in between.</p>
+      <p>Full electrical services for homes including new outlets, rewiring, and everything in between. We keep it simple and get it done right.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">⚡</div>
       <h3>Panel Upgrades</h3>
-      <p>Outdated breaker box? I'll upgrade your electrical panel to safely handle modern power demands.</p>
+      <p>If your breaker box is outdated or struggling to keep up, we will upgrade it so your home can handle what it needs to.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🚗</div>
       <h3>EV Charger Installation</h3>
-      <p>Level 2 EV charger installs for all major electric vehicle brands — fast, safe, and code-compliant.</p>
+      <p>We install Level 2 EV chargers for all major electric vehicle brands. Fast, safe, and done to code every time.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">💡</div>
       <h3>Ceiling Fans</h3>
-      <p>Fan installation, replacement, and wiring — with or without an existing ceiling box. Indoors or on covered patios.</p>
+      <p>We install and replace ceiling fans indoors and on covered patios, with or without an existing ceiling box.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🔦</div>
       <h3>Recessed Lighting</h3>
-      <p>Custom recessed lighting layouts for living rooms, kitchens, and hallways. Modern and clean finishes.</p>
+      <p>Custom recessed lighting for living rooms, kitchens, hallways and more. Clean finishes and a look you will love.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🔍</div>
-      <h3>Troubleshooting &amp; Outages</h3>
-      <p>Tripped breakers, dead outlets, flickering lights — I'll find the problem fast and fix it right.</p>
+      <h3>Troubleshooting and Outages</h3>
+      <p>Tripped breakers, dead outlets, flickering lights. We track down the problem and fix it so you do not have to worry.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🏡</div>
       <h3>Smart Home Installation</h3>
-      <p>Smart switches, dimmers, thermostats, and full home automation wiring — future-proof your home.</p>
+      <p>Smart switches, dimmers, thermostats and home automation wiring. We set it up so it actually works the way it should.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🔆</div>
       <h3>Light Fixture Installation</h3>
-      <p>Chandeliers, pendants, vanity lights, exterior fixtures — installed safely and looking great.</p>
+      <p>Chandeliers, pendants, vanity lights, exterior fixtures. We hang them safely and make sure they look great too.</p>
     </div>
   </div>
 </section>
 
 <section id="testimonials">
-  <p class="section-tag" style="text-align:center;">Client Reviews</p>
-  <h2 class="section-title" style="text-align:center; color:var(--white);">What Our <span>Clients Say</span></h2>
+  <p class="section-tag" style="text-align:center;">What People Are Saying</p>
+  <h2 class="section-title" style="text-align:center; color:var(--white);">Words From Our <span>Customers</span></h2>
   <div class="testimonials-grid">
     <div class="testimonial-card">
       <div class="stars">★★★★★</div>
       <div class="quote-mark">"</div>
-      <p>Josue installed recessed lighting throughout our living room and kitchen. Incredible work — clean, fast, and priced fairly. He even cleaned up after himself. Will absolutely call him again.</p>
+      <p>Josue did recessed lighting in our living room and kitchen. The work was clean, he was fast, and the price was fair. We will definitely be calling him again.</p>
       <div class="testimonial-author">
         <div class="author-avatar">MR</div>
         <div>
           <p class="author-name">Maria R.</p>
-          <p class="author-loc">Homeowner</p>
+          <p class="author-loc">Houston Homeowner</p>
         </div>
       </div>
     </div>
     <div class="testimonial-card">
       <div class="stars">★★★★★</div>
       <div class="quote-mark">"</div>
-      <p>Had a panel upgrade done — Josue explained everything, showed up on time, and finished ahead of schedule. I finally feel safe with the electrical in my house. Highly recommend.</p>
+      <p>Got a panel upgrade done and Josue explained everything step by step. He showed up on time and finished ahead of schedule. I finally feel good about the electrical in my house. Highly recommend.</p>
       <div class="testimonial-author">
         <div class="author-avatar">DT</div>
         <div>
           <p class="author-name">David T.</p>
-          <p class="author-loc">Homeowner</p>
+          <p class="author-loc">Houston Homeowner</p>
         </div>
       </div>
     </div>
     <div class="testimonial-card">
       <div class="stars">★★★★★</div>
       <div class="quote-mark">"</div>
-      <p>Got my EV charger installed in a few hours. Josue was professional, knowledgeable, and walked me through everything. Best part — no surprise charges. The price he quoted was the price I paid.</p>
+      <p>My EV charger was installed in just a few hours. Josue was professional and walked me through everything. The price he quoted me was the price I paid. No surprises.</p>
       <div class="testimonial-author">
         <div class="author-avatar">AL</div>
         <div>
           <p class="author-name">Alex L.</p>
-          <p class="author-loc">Tesla Owner</p>
+          <p class="author-loc">Houston Area Customer</p>
         </div>
       </div>
     </div>
@@ -402,7 +337,7 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <h2>Rios <span>Electrical</span></h2>
-      <p>Professional electrical services you can count on. Licensed, insured, and dedicated to quality work at honest prices.</p>
+      <p>A family owned, veteran owned electrical company serving Houston and the greater Houston area. We care about the work we do and we stand behind every job.</p>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
@@ -419,8 +354,8 @@
       <ul class="footer-contact">
         <li><span class="icon">📞</span><span>(832) 562-7694</span></li>
         <li><span class="icon">✉️</span><span>rioselectricalsolutionsllc@gmail.com</span></li>
-        <li><span class="icon">📍</span><span>Serving the local area</span></li>
-        <li><span class="icon">🕐</span><span>Mon–Sat, 7am – 7pm</span></li>
+        <li><span class="icon">📍</span><span>Houston and Greater Houston Area</span></li>
+        <li><span class="icon">🕐</span><span>Mon through Sat, 7am to 7pm</span></li>
       </ul>
     </div>
   </div>
